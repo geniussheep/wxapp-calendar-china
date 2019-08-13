@@ -1,0 +1,54 @@
+<view class="calendar-box active">
+  <view class="calendar-wrapper active">
+    <view class="calendar-panel">
+      <view class="date-befor" data-id="0" data-type="month" bindtap='dateChange'>
+        <text class="iconfont">
+        <text class='left color'></text>
+        </text>
+      </view>
+      <view class="calendar-panel-box">
+        <view>{{calendar.year}}年</view>
+        <view>{{calendar.month}}月</view>
+      </view>
+      <view class="date-after" data-id="1" data-type="month" bindtap='dateChange'>
+        <text class="iconfont">
+        <text class='right color'></text>
+        </text>
+      </view>
+      <view class='backtoday' bindtap='backtoday'>
+        回到今天
+      </view>
+    </view>
+    <view class="calendar-header">
+      <view>日</view>
+      <view>一</view>
+      <view>二</view>
+      <view>三</view>
+      <view>四</view>
+      <view>五</view>
+      <view>六</view>
+    </view>
+    <view class="calendar-body">
+      <block wx:for="{{calendar.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+        <view class="calender-body-date-week">
+          <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+            <view class="date {{calendar.month === day.month? '' : 'placeholder'}} {{ day.isToday ?'date-current': ''}} " data-week="{{week}}" data-index="{{index}}" data-ischeck="{{calendar.month === day.month}}"
+              bindtap='selectDay'>
+              
+              <text class="gongli">{{day.date}}</text>
+              <text class="nongli">{{day.cnDate}}</text>
+              
+              <view wx:if="{{day.have}}" class="data-circle"></view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="footBar">
+    <view class="whichDate">{{calendar.year}}年{{calendar.month}}月{{calendar.date}}日</view>
+    <view class="nongliDetail">
+        {{calendar.cnDateDetail}}
+    </view>
+  </view>
+</view>
