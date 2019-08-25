@@ -1,5 +1,6 @@
 // pages/calendar/calendar.js
 var CN_Date = require('../../utils/cndateutril.js');
+var LunarCalendar = require('../../utils/LunarCalendar.js');
 var todayDate = new Date();
 Page({
 
